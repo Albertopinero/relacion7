@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJercicio 3</title>
+</head>
+<body>
+
+<form onsubmit="return false;">
+    <label for="nombre">Nombre: </label>
+    <input type="text" id="jugador1" name="jugador1"><br><br>
+    
+    <label for="edad">Edad:</label>
+    <input type="text" id="edad" name="edad"><br></br> 
+
+    <label for="interes">Interés: </label>
+    <select id="interes" name="interes">
+      <option value="default">-- Valor por Defecto --</option>
+      <option value="opcion1">Lenguaje</option>
+      <option value="opcion2">Sistemas</option>
+      <option value="opcion3">Entorno 3</option>
+    </select><br></br>
+
+    <button onclick="validarEdad()">Validar</button>
+    <input type="submit" value="Enviar">       
+    
+</form>
+    <script>
+        
+        function enviar() {
+            var Nombre = document.getElementById("nombre").value;
+            var Edad = document.getElementById("edad").value;
+            var Interés = document.getElementById("interes").value;
+        
+            if ( Nombre === "" || Edad === "" || Interés === "") {
+                alert("Porfavor, Rellena los campos para continuar")
+                return;
+            }
+
+            document.getElementById("nombre").value = "";
+			document.getElementById("edad").value = "";
+			document.getElementById("interes").value = "";
+        } 
+
+            function borrar() {
+			document.getElementById("nombre").value = "";
+			document.getElementById("edad").value = "";
+			document.getElementById("interes").value = "";
+		}
+
+    function validarEdad() {
+      var edadUsuario = document.getElementById("edad").value;
+      
+      if (isNaN(edadUsuario)) {
+        document.getElementById("resultado").textContent = "Edad no válida";
+        return false;
+      }
+      
+      var edadInt = parseInt(edadUsuario, 10);
+      if (edadInt >= 18 && edadInt <= 100) {
+        document.getElementById("resultado").textContent = "Edad válida";
+      } else {
+        document.getElementById("resultado").textContent = "Edad no válida";
+      }
+    }
+
+    function validarNombre() {
+              var nombre = document.getElementById("nombre").value;
+              var letras = /^[a-zA-Z]+$/; 
+              
+              if (!letras.test(nombre)) {
+                alert("Solo se permiten letras en el nombre");
+              }
+            }
+
+            if (edad < 18) {
+              alert("Debes ser mayor de edad para enviar este formulario");
+              return false;
+            }
+          
+
+            if (Interés === "-- Valor por Defecto --") {
+              alert("Debes seleccionar una opcion ");
+              return false;
+            }
+            return true;
+          
+        
+    </script>
+</body>
+</html>
